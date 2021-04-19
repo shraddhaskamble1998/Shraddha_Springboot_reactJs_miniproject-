@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<style>
+.header {
+  padding: 80px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+h3{
+color:magenta;
+}
+a{
+
+color:white;
+}
+button {
+background-color:#1abc9c;
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+
+body
+{
+ background-color:#dee2e6;
+}
+
+</style>
+<title>Student Information</title>
+</head>
+<body background-color:#1abc9c>
+<div class="header">
+  
+  <h1>MODERN EDUCATION SOCIETY'S</h1>
+  <p> COLLEGE OF ENGINEERING ,PUNE</p>
+ 
+<marquee> Accredited By NACC with Grade 'A'</marquee>
+</div>
+	<div align="center" >
+		<h1>Student List</h1>
+
+	<h3>	<a href="/new" style="color:#C71585;">Add New Student</a>
+
+</h3>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Student ID</th>
+					<th>Student  Department</th>
+					<th>Student City</th>
+				   <th>Student Name </th>
+					<th>Sport Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student : ${listStudent}">
+					<td th:text="${student.sid}">Student ID</td>
+					<td th:text="${student.department}">Student Department</td>
+					<td th:text="${student.scity}">Sport City</td>
+										<td th:text="${student.sname}">Student Name</td>
+										<td th:text="${student.sportname}">Sport Name</td>
+										
+					
+					
+					<td>					
+					<button color:"white">	<a th:href="@{'/edit/' + ${student.sid}}">Edit</a>
+					</button>
+											&nbsp;&nbsp;&nbsp;
+					
+						<button>
+						<a th:href="@{'/delete/' + ${student.sid}}">Delete</a>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
